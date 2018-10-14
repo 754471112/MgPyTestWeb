@@ -1,4 +1,4 @@
-"""Helloworld URL Configuration
+"""MgPythonTestWeb URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -15,17 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import view1
-from django.conf.urls import url
-from Controls import MainView
+from Test1 import views as Test1Views
+from Test1.Controls import homeview as Test1ControlsViews
 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-# ]
 urlpatterns = [
-    #url方法有四个参数:regex正则表达式,view用于执行与正则表达式匹配的 URL 请求
-    #kwargs:视图使用的字典类型的参数(可选)、name:用来反向获取URL(可选)
-    url(r'^hello$', view1.hello),
-    url(r"^showView1",view1.showView1),
-    url(r"mainview",MainView.showMainView),
+    # url(r'^hello$', view1.hello),#1.8以前的版本格式,可兼容使用
+    path('admin/', admin.site.urls),
+    path('Test1Home/',Test1Views.home),
+    path('Test1ControlsHome/',Test1ControlsViews.home),
 ]
